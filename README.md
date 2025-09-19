@@ -3,7 +3,8 @@ This is a mod for the game [Rail Route](https://store.steampowered.com/app/11241
 
 ## Current Changes
 * The Arrival Sensor is now placable on a Stations Tracks
-* The Shunting Sensor is changed to trigger on Contact and Departure instead of Contact and Arrival. <p> (The Shunting sensor will trigger later then other sensors and overwrite the previously set path)
+* The Shunting Sensor is changed to trigger on Contact and Departure instead of Contact and Arrival.  
+(The Shunting sensor will trigger later then other sensors and overwrite the previously set path)
 
 ## How to Install
 Download the latest version of the mod and go to the mods folder of Rail Route. If the mods folder does not exist create it. Finaly extract the zip into the mods folder so that a folder with the name `Rail Route QOL mod` is created containing `0Harmony.dll` and `Rail_Route_QOL_mod.dll`.

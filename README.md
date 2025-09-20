@@ -17,18 +17,25 @@ Mods folder on Linux:
 ```
 $HOME/.config/unity3d/bitrich/Rail Route/mods
 ```
+Mods folder on Mac:
+```
+~/Library/Application Support/Rail Route/mods
+```
 
 ## Building the Mod from Source
 To build the mod you need to have the games `RailRoute.dll`, `UnityEngine.dll` and `UnityEngine.CoreModule.dll` in the libs folder.
 
 If you don't want the build process to auto copy the mod or need to change the path you can do that in the `Rail Route QOL mod.csproj` by removing these lines at the end of the file or by changing the path for your System:
-```
+```xaml
     <Target Name="PostBuildCopy" AfterTargets="Build">
-        <MakeDir Directories="$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod" Condition=" '$(OS)' == 'Windows_NT' " />
-        <MakeDir Directories="$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/" Condition=" '$(OS)' != 'Windows_NT' " />
-        <Exec Condition=" '$(OS)' == 'Windows_NT' " Command="copy '$(TargetPath)' '$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod/$(TargetFileName)'" />
-        <Exec Condition=" '$(OS)' != 'Windows_NT' " Command="cp '$(TargetPath)' '$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/$(TargetFileName)'" />
-        <Exec Condition=" '$(OS)' == 'Windows_NT' " Command="copy '$(OutputPath)/0Harmony.dll' '$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod/0Harmony.dll'" />
-        <Exec Condition=" '$(OS)' != 'Windows_NT' " Command="cp '$(OutputPath)/0Harmony.dll' '$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/0Harmony.dll'" />
+        <!-- Windows -->
+        <MakeDir Directories="$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod" Condition="'$(OS)' == 'Windows_NT'" />
+        <Exec Condition="'$(OS)' == 'Windows_NT'" Command="copy '$(TargetPath)' '$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod/$(TargetFileName)'" />
+        <Exec Condition="'$(OS)' == 'Windows_NT'" Command="copy '$(OutputPath)/0Harmony.dll' '$(USERPROFILE)/AppData/LocalLow/bitrich/Rail Route/mods/Rail Route QOL mod/0Harmony.dll'" />
+
+        <!-- Linux -->
+        <MakeDir Directories="$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/" Condition="'$(OS)' != 'Windows_NT'" />
+        <Exec Condition="'$(OS)' != 'Windows_NT'" Command="cp '$(TargetPath)' '$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/$(TargetFileName)'" />
+        <Exec Condition="'$(OS)' != 'Windows_NT'" Command="cp '$(OutputPath)/0Harmony.dll' '$(HOME)/.config/unity3d/bitrich/Rail Route/mods/Rail Route QOL mod/0Harmony.dll'" />
     </Target>
 ```
